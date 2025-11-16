@@ -21,3 +21,5 @@ public class ClinicaVirtualApplication {
 // 2. Luego vas a "Cambios de GIT""
 // 3. Escribes un mensaje cualquiera, para saber de que fue el cambio y eso.
 // 4. Pones en "confirmar todo" y luego le pones a "Push" o "Insertar"
+
+//Desde el mismo github puedes hacer los cambios XD pero es más simple su editor de codigo.
