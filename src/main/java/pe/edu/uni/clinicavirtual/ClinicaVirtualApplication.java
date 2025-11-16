@@ -17,4 +17,7 @@ public class ClinicaVirtualApplication {
 // Nada XD no le digas Nada. Primero hagamos funcional esto. Espero q no dure solo 30 minutos
 
 // LA SOLUCION PARA MANDAR LOS CAMBIOS AL GITHUB ES EL SIGUIENTE:
-// 
+// 1. Vas a la ventana Ver / Team Explorer
+// 2. Luego vas a "Cambios de GIT""
+// 3. Escribes un mensaje cualquiera, para saber de que fue el cambio y eso.
+// 4. Pones en "confirmar todo" y luego le pones a "Push" o "Insertar"
