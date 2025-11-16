@@ -11,3 +11,9 @@ public class ClinicaVirtualApplication {
 	}
 
 }
+dasdasdasd
+ssdda
+dasdasdasdd
+public void metodoEjemplo() {
+	 	// Este es un método de ejemplo
+}

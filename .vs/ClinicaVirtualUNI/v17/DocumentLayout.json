@@ -1,0 +1,45 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Usuario\\OneDrive\\PROGRAMACI\u00D3N\\REPOSITORIOS\\FrankDaniel-322\\ClinicaVirtualUNI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Usuario\\OneDrive\\PROGRAMACI\u00D3N\\REPOSITORIOS\\FrankDaniel-322\\ClinicaVirtualUNI\\src\\main\\java\\pe\\edu\\uni\\clinicavirtual\\ClinicaVirtualApplication.java||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\main\\java\\pe\\edu\\uni\\clinicavirtual\\ClinicaVirtualApplication.java||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ClinicaVirtualApplication.java",
+              "DocumentMoniker": "C:\\Users\\Usuario\\OneDrive\\PROGRAMACI\u00D3N\\REPOSITORIOS\\FrankDaniel-322\\ClinicaVirtualUNI\\src\\main\\java\\pe\\edu\\uni\\clinicavirtual\\ClinicaVirtualApplication.java",
+              "RelativeDocumentMoniker": "src\\main\\java\\pe\\edu\\uni\\clinicavirtual\\ClinicaVirtualApplication.java",
+              "ToolTip": "C:\\Users\\Usuario\\OneDrive\\PROGRAMACI\u00D3N\\REPOSITORIOS\\FrankDaniel-322\\ClinicaVirtualUNI\\src\\main\\java\\pe\\edu\\uni\\clinicavirtual\\ClinicaVirtualApplication.java",
+              "RelativeToolTip": "src\\main\\java\\pe\\edu\\uni\\clinicavirtual\\ClinicaVirtualApplication.java",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA8AAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001630|",
+              "WhenOpened": "2025-11-16T15:03:07.249Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
