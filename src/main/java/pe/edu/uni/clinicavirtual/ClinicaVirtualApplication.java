@@ -23,3 +23,5 @@ public class ClinicaVirtualApplication {
 // 4. Pones en "confirmar todo" y luego le pones a "Push" o "Insertar"
 
 //Desde el mismo github puedes hacer los cambios XD pero es más simple su editor de codigo.
+
+

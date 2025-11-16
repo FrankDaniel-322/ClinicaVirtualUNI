@@ -18,7 +18,7 @@
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
             },
             {
               "$type": "Document",
@@ -28,14 +28,10 @@
               "RelativeDocumentMoniker": "src\\main\\java\\pe\\edu\\uni\\clinicavirtual\\ClinicaVirtualApplication.java",
               "ToolTip": "C:\\Users\\Usuario\\OneDrive\\PROGRAMACI\u00D3N\\REPOSITORIOS\\FrankDaniel-322\\ClinicaVirtualUNI\\src\\main\\java\\pe\\edu\\uni\\clinicavirtual\\ClinicaVirtualApplication.java",
               "RelativeToolTip": "src\\main\\java\\pe\\edu\\uni\\clinicavirtual\\ClinicaVirtualApplication.java",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA8AAAALAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001630|",
               "WhenOpened": "2025-11-16T15:03:07.249Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
             }
           ]
         }
