@@ -1,9 +1,0 @@
---FECHA PERSONALIZADA
-
-SELECT 
-	'OTI, ' + 
-	DATENAME(WEEKDAY, GETDATE()) + ' ' + 
-	LTRIM(DAY(GETDATE())) + ' de ' +
-	DATENAME(MONTH, GETDATE()) + ' del ' +
-	LTRIM(YEAR(GETDATE())) AS 'Fecha'
-GO

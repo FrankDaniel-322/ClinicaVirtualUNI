@@ -1,6 +1,14 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\main",
+    "\\src\\main\\java",
+    "\\src\\main\\java\\pe",
+    "\\src\\main\\java\\pe\\edu",
+    "\\src\\main\\java\\pe\\edu\\uni",
+    "\\src\\main\\java\\pe\\edu\\uni\\clinicavirtual"
   ],
+  "SelectedNode": "\\src\\main\\java\\pe\\edu\\uni\\clinicavirtual\\ClinicaVirtualApplication.java",
   "PreviewInSolutionExplorer": false
 }
