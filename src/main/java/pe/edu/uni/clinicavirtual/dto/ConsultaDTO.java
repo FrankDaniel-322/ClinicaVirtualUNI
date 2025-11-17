@@ -24,15 +24,7 @@ public class ConsultaDTO {
     private List<String> sintomas;
     private RespuestaMedicaDTO respuestaMedica;
     
-    // Para creación
+    // Para creaciï¿½n
     private List<String> sintomasSeleccionados;
 }
 
-@Data
-class ConsultaRequest {
-    private Long especialidadId;
-    private String motivoConsulta;
-    private String antecedentes;
-    private List<String> sintomas;
-    private Consulta.Urgencia urgencia = Consulta.Urgencia.NORMAL;
-}
