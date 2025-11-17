@@ -1,0 +1,241 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responder Consulta - Clínica UNI</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .responder-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header-section {
+            background: linear-gradient(135deg, #0066CC, #004499);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .info-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+
+            .info-card h3 {
+                color: #0066CC;
+                margin-bottom: 20px;
+                padding-bottom: 10px;
+                border-bottom: 2px solid var(--border-gray);
+            }
+
+        .info-group {
+            margin-bottom: 15px;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .info-value {
+            color: var(--text-gray);
+            padding: 10px 15px;
+            background: var(--background-light);
+            border-radius: 6px;
+            border-left: 3px solid #0066CC;
+        }
+
+        .formulario-respuesta {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        .diagnostico-section, .recomendaciones-section {
+            margin-bottom: 25px;
+        }
+
+        .textarea-large {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .urgencia-section, .archivos-section {
+            margin-bottom: 25px;
+        }
+
+        .btn-group-medico {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-group-medico {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="responder-container">
+        <div class="header-section">
+            <h1>Responder Consulta Médica</h1>
+            <p>Complete el diagnóstico y recomendaciones para el paciente</p>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>👤 Información del Paciente</h3>
+                <div class="info-group">
+                    <div class="info-label">Paciente</div>
+                    <div class="info-value" id="infoPaciente">Cargando...</div>
+                </div>
+                <div class="info-group">
+                    <div class="info-label">Edad</div>
+                    <div class="info-value" id="infoEdadPaciente">Cargando...</div>
+                </div>
+                <div class="info-group">
+                    <div class="info-label">Contacto</div>
+                    <div class="info-value" id="infoContacto">Cargando...</div>
+                </div>
+                <div class="info-group">
+                    <div class="info-label">Antecedentes Médicos</div>
+                    <div class="info-value" id="infoAntecedentes">No especificados</div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>📋 Información de la Consulta</h3>
+                <div class="info-group">
+                    <div class="info-label">Fecha de Solicitud</div>
+                    <div class="info-value" id="infoFechaSolicitud">Cargando...</div>
+                </div>
+                <div class="info-group">
+                    <div class="info-label">Tipo de Consulta</div>
+                    <div class="info-value" id="infoEspecialidad">Medicina General</div>
+                </div>
+                <div class="info-group">
+                    <div class="info-label">Archivos Adjuntos</div>
+                    <div class="info-value" id="infoArchivos">No hay archivos adjuntos</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h3>🎯 Motivo de la Consulta</h3>
+            <div class="info-value" style="font-style: italic; background: #fff9e6; border-left-color: #ffc107;" id="infoMotivo">
+                Cargando...
+            </div>
+        </div>
+
+        <div class="formulario-respuesta">
+            <h3 style="color: #0066CC; margin-bottom: 25px;">✍️ Respuesta Médica</h3>
+
+            <form id="formRespuesta">
+                <div class="urgencia-section">
+                    <div class="form-group">
+                        <label class="required">Nivel de Urgencia</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="urgenciaNormal" name="urgencia" value="NORMAL" checked>
+                                <label for="urgenciaNormal">Normal</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="urgenciaUrgente" name="urgencia" value="URGENTE">
+                                <label for="urgenciaUrgente">Urgente</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="diagnostico-section">
+                    <div class="form-group">
+                        <label for="diagnostico" class="required">Diagnóstico Tentativo</label>
+                        <textarea id="diagnostico"
+                                  name="diagnostico"
+                                  class="form-control textarea-large"
+                                  placeholder="Describa el diagnóstico basado en los síntomas presentados..."
+                                  required></textarea>
+                    </div>
+                </div>
+
+                <div class="recomendaciones-section">
+                    <div class="form-group">
+                        <label for="recomendaciones" class="required">Recomendaciones y Tratamiento</label>
+                        <textarea id="recomendaciones"
+                                  name="recomendaciones"
+                                  class="form-control textarea-large"
+                                  placeholder="Indique el tratamiento, medicamentos, cuidados y recomendaciones..."
+                                  required></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="medicamentos">Medicamentos Recetados (Opcional)</label>
+                    <textarea id="medicamentos"
+                              name="medicamentos"
+                              class="form-control"
+                              rows="3"
+                              placeholder="Ej: Paracetamol 500mg - 1 tableta cada 8 horas por 3 días..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="proximoControl">Próximo Control Recomendado</label>
+                    <input type="date"
+                           id="proximoControl"
+                           name="proximoControl"
+                           class="form-control"
+                           min="">
+                </div>
+
+                <div class="archivos-section">
+                    <div class="form-group">
+                        <label for="archivoReceta">Adjuntar Receta Médica (Opcional)</label>
+                        <input type="file"
+                               id="archivoReceta"
+                               name="archivoReceta"
+                               class="form-control"
+                               accept=".pdf,.jpg,.jpeg,.png">
+                    </div>
+                </div>
+
+                <div class="btn-group-medico">
+                    <button type="button" class="btn btn-secondary" onclick="volverAlPanel()">
+                        ← VOLVER AL PANEL
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        ✅ ENVIAR RESPUESTA
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/api-config.js"></script>
+    <script src="js/responder-validaciones.js"></script>
+</body>
+</html>

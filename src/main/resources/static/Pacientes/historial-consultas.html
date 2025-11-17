@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de Consultas - Clínica UNI</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .historial-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header-section {
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-blue));
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .filtros-section {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 25px;
+        }
+
+        .filtros-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            align-items: end;
+        }
+
+        .consultas-table {
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .table-header {
+            background: var(--primary-green);
+            color: var(--white);
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 100px 1fr 150px 120px 120px 100px;
+            gap: 15px;
+            font-weight: 600;
+        }
+
+        .consulta-row {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 100px 1fr 150px 120px 120px 100px;
+            gap: 15px;
+            align-items: center;
+            border-bottom: 1px solid var(--border-gray);
+            transition: background 0.3s ease;
+        }
+
+            .consulta-row:hover {
+                background: var(--background-light);
+            }
+
+            .consulta-row:last-child {
+                border-bottom: none;
+            }
+
+        .estado-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .estado-pendiente {
+            background: #FFF3CD;
+            color: #856404;
+        }
+
+        .estado-completada {
+            background: #D1ECF1;
+            color: #0C5460;
+        }
+
+        .estado-cancelada {
+            background: #F8D7DA;
+            color: #721C24;
+        }
+
+        .btn-detalles {
+            background: var(--secondary-blue);
+            color: var(--white);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+
+            .btn-detalles:hover {
+                background: #0056b3;
+            }
+
+        .sin-consultas {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-gray);
+        }
+
+            .sin-consultas .icono {
+                font-size: 64px;
+                margin-bottom: 20px;
+                opacity: 0.5;
+            }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-green);
+            padding-bottom: 15px;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-gray);
+        }
+
+        .detalle-item {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: var(--background-light);
+            border-radius: 8px;
+        }
+
+            .detalle-item h4 {
+                color: var(--primary-green);
+                margin-bottom: 8px;
+            }
+
+        .respuesta-medica {
+            background: #E8F5E8;
+            border-left: 4px solid var(--success-green);
+        }
+
+        @media (max-width: 768px) {
+            .table-header, .consulta-row {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .table-header {
+                display: none;
+            }
+
+            .consulta-row {
+                padding: 15px;
+                border: 1px solid var(--border-gray);
+                border-radius: 8px;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="historial-container">
+        <div class="header-section">
+            <h1>Historial de Consultas</h1>
+            <p>Revisa todas tus consultas médicas anteriores</p>
+        </div>
+
+        <div class="filtros-section">
+            <div class="filtros-grid">
+                <div class="form-group">
+                    <label for="filtroEstado">Filtrar por estado</label>
+                    <select id="filtroEstado" class="form-select" onchange="filtrarConsultas()">
+                        <option value="">Todos los estados</option>
+                        <option value="PENDIENTE">Pendientes</option>
+                        <option value="COMPLETADA">Completadas</option>
+                        <option value="CANCELADA">Canceladas</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="filtroFecha">Filtrar por fecha</label>
+                    <input type="month" id="filtroFecha" class="form-control" onchange="filtrarConsultas()">
+                </div>
+                <div>
+                    <button type="button" class="btn btn-secondary" onclick="limpiarFiltros()">
+                        Limpiar Filtros
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="consultas-table">
+            <div class="table-header">
+                <div>Fecha</div>
+                <div>Especialidad</div>
+                <div>Motivo</div>
+                <div>Estado</div>
+                <div>Detalles</div>
+                <div>Receta</div>
+            </div>
+
+            <div id="listaConsultas"></div>
+        </div>
+
+        <div class="btn-group-single" style="margin-top: 30px;">
+            <button type="button" class="btn btn-outline" onclick="window.location.href='dashboard-paciente.html'">
+                ← VOLVER AL PANEL PRINCIPAL
+            </button>
+        </div>
+    </div>
+
+    <div id="modalDetalles" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 style="color: var(--primary-green); margin: 0;">Detalles de la Consulta</h3>
+                <button class="close-modal" onclick="cerrarModal()">×</button>
+            </div>
+            <div id="modalContenido"></div>
+        </div>
+    </div>
+
+    <script src="js/api-config.js"></script>
+    <script src="js/historial-validaciones.js"></script>
+</body>
+</html>

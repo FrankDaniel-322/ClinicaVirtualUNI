@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal del Médico - Clínica UNI</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="card">
+            <div class="card-header">
+                <div class="logo-container">
+                    <div class="logo">UNI</div>
+                </div>
+                <h1>Clínica Virtual UNI</h1>
+                <p>Portal del Médico</p>
+            </div>
+
+            <div class="card-body">
+                <h2 style="text-align: center; color: var(--text-dark); margin-bottom: 30px;">
+                    Iniciar Sesión
+                </h2>
+
+                <form id="loginMedicoForm" onsubmit="return validarLoginMedico(event)">
+                    <div class="form-group">
+                        <label for="cmp" class="required">CMP (Colegio Médico del Perú)</label>
+                        <input type="text"
+                               id="cmp"
+                               name="cmp"
+                               class="form-control"
+                               placeholder="Ingrese su CMP"
+                               maxlength="10"
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="passwordMedico" class="required">Contraseña</label>
+                        <input type="password"
+                               id="passwordMedico"
+                               name="passwordMedico"
+                               class="form-control"
+                               placeholder="Ingrese su contraseña"
+                               required>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="recordarMedico" name="recordarMedico">
+                        <label for="recordarMedico">Recordarme en este dispositivo</label>
+                    </div>
+
+                    <div class="checkbox-group" style="margin-bottom: 20px;">
+                        <input type="checkbox" id="politicaMedico" required>
+                        <label for="politicaMedico">
+                            Acepto la
+                            <a href="politica-privacidad.html" target="_blank">Política de Protección de Datos Personales</a>
+                        </label>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-primary">
+                            INICIAR SESIÓN
+                        </button>
+                        <button type="button" class="btn btn-outline" onclick="window.location.href='index.html'">
+                            ATRÁS
+                        </button>
+                    </div>
+                </form>
+
+                <div class="text-center" style="margin-top: 20px;">
+                    <a href="index.html" class="link">← Volver a selección de perfil</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api-config.js"></script>
+    <script src="js/validaciones.js"></script>
+</body>
+</html>

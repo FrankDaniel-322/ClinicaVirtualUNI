@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Virtual UNI - Bienvenida</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="card">
+            <div class="card-header">
+                <div class="logo-container">
+                    <div class="logo">UNI</div>
+                </div>
+                <h1>Clínica Virtual UNI</h1>
+                <p>Bienvenido al Sistema de Consultas en Línea</p>
+            </div>
+
+            <div class="card-body">
+                <h2 style="text-align: center; color: var(--text-dark); margin-bottom: 10px;">
+                    ¿Cómo deseas ingresar?
+                </h2>
+                <p style="text-align: center; color: var(--text-gray); margin-bottom: 30px;">
+                    Selecciona tu perfil para continuar
+                </p>
+
+                <div class="role-selection">
+                    <div class="role-card" onclick="window.location.href='login-paciente.html'">
+                        <div class="role-icon">
+                            <span style="font-size: 48px;">🙋‍♂️</span>
+                        </div>
+                        <h3>Paciente</h3>
+                        <p>Accede a tus consultas y solicita atención médica</p>
+                    </div>
+
+                    <div class="role-card" onclick="window.location.href='login-medico.html'">
+                        <div class="role-icon">
+                            <span style="font-size: 48px;">👨‍⚕️</span>
+                        </div>
+                        <h3>Médico</h3>
+                        <p>Revisa y responde las consultas de tus pacientes</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 30px; padding-top: 25px; border-top: 1px solid var(--border-gray); text-align: center;">
+                    <p style="font-size: 14px; color: var(--text-gray);">
+                        ¿Necesitas ayuda? Contáctanos al:
+                        <strong style="color: var(--primary-green);">clinica.uni@uni.pe</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

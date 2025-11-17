@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal del Paciente - Clínica UNI</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="card">
+            <div class="card-header">
+                <div class="logo-container">
+                    <div class="logo">UNI</div>
+                </div>
+                <h1>Clínica Virtual UNI</h1>
+                <p>Portal del Paciente</p>
+            </div>
+
+            <div class="card-body">
+                <h2 style="text-align: center; color: var(--text-dark); margin-bottom: 30px;">
+                    Iniciar Sesión
+                </h2>
+
+                <form id="loginForm" onsubmit="return validarLogin(event)">
+                    <div class="form-group">
+                        <label for="documento" class="required">Número de documento</label>
+                        <input type="text"
+                               id="documento"
+                               name="documento"
+                               class="form-control"
+                               placeholder="Ingrese su número de documento"
+                               maxlength="15"
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="required">Contraseña</label>
+                        <input type="password"
+                               id="password"
+                               name="password"
+                               class="form-control"
+                               placeholder="Ingrese su contraseña"
+                               required>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="recordar" name="recordar">
+                        <label for="recordar">Recordarme en este dispositivo</label>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-primary">
+                            INICIAR SESIÓN
+                        </button>
+                        <button type="button" class="btn btn-outline" onclick="window.location.href='registro-paso1.html'">
+                            REGISTRARSE
+                        </button>
+                    </div>
+
+                    <div class="text-center" style="margin-top: 20px;">
+                        <a href="#" class="link">¿Olvidaste tu contraseña?</a>
+                    </div>
+                </form>
+
+                <div class="text-center" style="margin-top: 20px;">
+                    <a href="index.html" class="link">← Volver a selección de perfil</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api-config.js"></script>
+    <script src="js/validaciones.js"></script>
+</body>
+</html>

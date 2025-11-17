@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitar Consulta - Clínica UNI</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .consultation-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .step-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+            .step-indicator::before {
+                content: "";
+                position: absolute;
+                top: 20px;
+                left: 0;
+                right: 0;
+                height: 3px;
+                background: var(--border-gray);
+                z-index: 0;
+            }
+
+        .step {
+            position: relative;
+            text-align: center;
+            flex: 1;
+            z-index: 1;
+        }
+
+        .step-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 3px solid var(--border-gray);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .step.active .step-circle {
+            background: var(--primary-green);
+            border-color: var(--primary-green);
+            color: var(--white);
+        }
+
+        .step.completed .step-circle {
+            background: var(--success-green);
+            border-color: var(--success-green);
+            color: var(--white);
+        }
+
+        .step-label {
+            font-size: 12px;
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        .step.active .step-label {
+            color: var(--primary-green);
+            font-weight: 600;
+        }
+
+        .consultation-form {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-section {
+            display: none;
+        }
+
+            .form-section.active {
+                display: block;
+            }
+
+        .sintomas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .sintoma-btn {
+            padding: 10px 15px;
+            border: 2px solid var(--border-gray);
+            border-radius: 25px;
+            background: var(--white);
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+            .sintoma-btn:hover {
+                border-color: var(--primary-green);
+            }
+
+            .sintoma-btn.selected {
+                background: var(--primary-green);
+                color: var(--white);
+                border-color: var(--primary-green);
+            }
+    </style>
+</head>
+<body>
+    <div class="consultation-container">
+        <div class="card-header" style="border-radius: 12px 12px 0 0; margin-bottom: 0;">
+            <div class="logo-container">
+                <div class="logo">UNI</div>
+            </div>
+            <h1>Solicitar Consulta Médica</h1>
+            <p>Complete los datos para agendar su cita</p>
+        </div>
+
+        <div class="step-indicator">
+            <div class="step active" data-step="1">
+                <div class="step-circle">1</div>
+                <div class="step-label">Datos Consulta</div>
+            </div>
+            <div class="step" data-step="2">
+                <div class="step-circle">2</div>
+                <div class="step-label">Confirmación</div>
+            </div>
+        </div>
+
+        <div class="consultation-form">
+            <form id="consultaForm">
+                <div class="form-section active" id="step1">
+                    <h3 style="color: var(--primary-green); margin-bottom: 20px;">Paso 1 de 2 - Información de la Consulta</h3>
+
+                    <div class="form-group">
+                        <label for="especialidad" class="required">Selecciona una especialidad</label>
+                        <select id="especialidad" name="especialidad" class="form-select" required>
+                            <option value="">Seleccionar...</option>
+                            <option value="1">Medicina General</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="required">Seleccione sus síntomas</label>
+                        <div class="sintomas-grid" id="sintomasContainer"></div>
+                        <small style="color: var(--text-gray);">Puede seleccionar múltiples síntomas</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="motivo" class="required">Motivo de la consulta</label>
+                        <textarea id="motivo" name="motivo" class="form-control" rows="4" placeholder="Describa brevemente el motivo de su consulta..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="antecedentes">Antecedentes Relacionados</label>
+                        <textarea id="antecedentes" name="antecedentes" class="form-control" rows="3" placeholder="Enfermedades previas, alergias, medicamentos actuales..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="archivos">Adjuntar Archivos (Opcional)</label>
+                        <input type="file" id="archivos" name="archivos" class="form-control" multiple accept=".pdf,.jpg,.jpeg,.png">
+                        <small style="color: var(--text-gray); font-size: 12px;">Formatos permitidos: PDF, JPG, PNG (Máx. 5MB por archivo)</small>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-secondary" onclick="window.location.href='dashboard-paciente.html'">
+                            ATRÁS
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="irAConfirmacion()">
+                            REVISAR Y CONFIRMAR
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-section" id="step2">
+                    <h3 style="color: var(--primary-green); margin-bottom: 20px;">Paso 2 de 2 - Confirmación</h3>
+
+                    <div style="background: var(--background-light); padding: 20px; border-radius: 8px; margin-bottom: 25px;">
+                        <h4 style="color: var(--text-dark); margin-bottom: 15px;">Resumen de su cita:</h4>
+                        <div id="resumenCita"></div>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="confirmacion" required>
+                        <label for="confirmacion">
+                            Confirmo que la información proporcionada es correcta y acepto los
+                            <a href="politica-privacidad.html" target="_blank">términos del servicio</a>
+                        </label>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-secondary" onclick="volverADatos()">
+                            ATRÁS
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="reservarCita()">
+                            RESERVAR CITA
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/api-config.js"></script>
+    <script src="js/consulta-validaciones.js"></script>
+</body>
+</html>

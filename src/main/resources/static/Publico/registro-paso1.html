@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Paciente - Clínica UNI</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="card card-wide">
+            <div class="card-header">
+                <div class="logo-container">
+                    <div class="logo">UNI</div>
+                </div>
+                <h1>Registro de Paciente</h1>
+                <p>Complete sus datos para crear su cuenta</p>
+            </div>
+
+            <div class="card-body">
+                <div class="steps">
+                    <div class="step active">
+                        <div class="step-number">1</div>
+                        <div class="step-label">Datos Personales</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Contraseña</div>
+                    </div>
+                </div>
+
+                <h2 style="color: var(--primary-green); margin-bottom: 25px; font-size: 20px;">
+                    1. Información Personal
+                </h2>
+
+                <form id="registroForm1" onsubmit="return validarPaso1(event)">
+                    <div class="form-group">
+                        <label class="required">Tipo de documento</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="dni-reg" name="tipoDoc" value="DNI" checked>
+                                <label for="dni-reg">DNI</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="ce-reg" name="tipoDoc" value="CE">
+                                <label for="ce-reg">CE</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="pasaporte-reg" name="tipoDoc" value="PASAPORTE">
+                                <label for="pasaporte-reg">Pasaporte</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="numDoc" class="required">Número de documento</label>
+                        <input type="text"
+                               id="numDoc"
+                               name="numDoc"
+                               class="form-control"
+                               placeholder="Ej: 12345678"
+                               maxlength="15"
+                               required>
+                    </div>
+
+                    <div class="form-row-3">
+                        <div class="form-group">
+                            <label for="nombres" class="required">Nombres</label>
+                            <input type="text"
+                                   id="nombres"
+                                   name="nombres"
+                                   class="form-control"
+                                   placeholder="Ej: Juan Carlos"
+                                   required>
+                        </div>
+                        <div class="form-group">
+                            <label for="apPaterno" class="required">Apellido Paterno</label>
+                            <input type="text"
+                                   id="apPaterno"
+                                   name="apPaterno"
+                                   class="form-control"
+                                   placeholder="Ej: Pérez"
+                                   required>
+                        </div>
+                        <div class="form-group">
+                            <label for="apMaterno" class="required">Apellido Materno</label>
+                            <input type="text"
+                                   id="apMaterno"
+                                   name="apMaterno"
+                                   class="form-control"
+                                   placeholder="Ej: Gómez"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fechaNac" class="required">Fecha de nacimiento</label>
+                            <input type="date"
+                                   id="fechaNac"
+                                   name="fechaNac"
+                                   class="form-control"
+                                   max="2024-12-31"
+                                   required>
+                        </div>
+                        <div class="form-group">
+                            <label for="sexo" class="required">Sexo</label>
+                            <select id="sexo" name="sexo" class="form-select" required>
+                                <option value="">Seleccionar...</option>
+                                <option value="M">Masculino</option>
+                                <option value="F">Femenino</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="celular" class="required">Celular</label>
+                            <input type="tel"
+                                   id="celular"
+                                   name="celular"
+                                   class="form-control"
+                                   placeholder="Ej: 987654321"
+                                   maxlength="9"
+                                   pattern="[9][0-9]{8}"
+                                   required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="required">Correo electrónico</label>
+                            <input type="email"
+                                   id="email"
+                                   name="email"
+                                   class="form-control"
+                                   placeholder="ejemplo@correo.com"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="form-row-3">
+                        <div class="form-group">
+                            <label for="departamento" class="required">Departamento</label>
+                            <select id="departamento" name="departamento" class="form-select" required onchange="cargarProvincias()">
+                                <option value="">Seleccionar...</option>
+                                <option value="Lima">Lima</option>
+                                <option value="Arequipa">Arequipa</option>
+                                <option value="Cusco">Cusco</option>
+                                <option value="La Libertad">La Libertad</option>
+                                <option value="Piura">Piura</option>
+                                <option value="Lambayeque">Lambayeque</option>
+                                <option value="Junín">Junín</option>
+                                <option value="Callao">Callao</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="provincia" class="required">Provincia</label>
+                            <select id="provincia" name="provincia" class="form-select" required onchange="cargarDistritos()">
+                                <option value="">Seleccionar...</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="distrito" class="required">Distrito</label>
+                            <select id="distrito" name="distrito" class="form-select" required>
+                                <option value="">Seleccionar...</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="direccion" class="required">Dirección del paciente</label>
+                        <input type="text"
+                               id="direccion"
+                               name="direccion"
+                               class="form-control"
+                               placeholder="Ej: Av. Túpac Amaru 210, Rímac"
+                               required>
+                    </div>
+
+                    <div class="checkbox-group" style="margin-top: 25px;">
+                        <input type="checkbox" id="politica-reg" required>
+                        <label for="politica-reg">
+                            Declaro conocer y aceptar la
+                            <a href="politica-privacidad.html" target="_blank">Política de Protección de Datos Personales</a>
+                        </label>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-secondary" onclick="window.location.href='login-paciente.html'">
+                            ATRÁS
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            SIGUIENTE
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api-config.js"></script>
+    <script src="js/validaciones.js"></script>
+</body>
+</html>

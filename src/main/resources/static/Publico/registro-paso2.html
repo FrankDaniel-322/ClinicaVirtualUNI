@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Contraseña | Clínica UNI</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="card">
+            <div class="card-header">
+                <div class="logo-container">
+                    <div class="logo">UNI</div>
+                </div>
+                <h1>Registro de Paciente</h1>
+                <p>Complete sus datos para crear su cuenta</p>
+            </div>
+
+            <div class="card-body">
+                <div class="steps">
+                    <div class="step completed">
+                        <div class="step-number">✓</div>
+                        <div class="step-label">Datos Personales</div>
+                    </div>
+                    <div class="step active">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Contraseña</div>
+                    </div>
+                </div>
+
+                <h2 style="color: var(--primary-green); margin-bottom: 25px; font-size: 20px;">
+                    2. Ingresa tu contraseña
+                </h2>
+
+                <form id="registroForm2" onsubmit="return validarPaso2(event)">
+                    <div class="form-group">
+                        <label for="password1" class="required">Ingresa una contraseña</label>
+                        <input type="password"
+                               id="password1"
+                               name="password1"
+                               class="form-control"
+                               placeholder="Ingrese su contraseña"
+                               oninput="validarPassword()"
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password2" class="required">Repetir contraseña</label>
+                        <input type="password"
+                               id="password2"
+                               name="password2"
+                               class="form-control"
+                               placeholder="Repita su contraseña"
+                               oninput="validarCoincidencia()"
+                               required>
+                        <span id="matchMessage" style="font-size: 13px; margin-top: 5px; display: none;"></span>
+                    </div>
+
+                    <div class="password-requirements">
+                        <h4>Características de tu contraseña:</h4>
+                        <ul id="requisitos">
+                            <li id="req-length">Al menos 8 caracteres</li>
+                            <li id="req-uppercase">Al menos una letra mayúscula (A-Z)</li>
+                            <li id="req-lowercase">Al menos una letra minúscula (a-z)</li>
+                            <li id="req-number">Al menos un número (0-9)</li>
+                        </ul>
+                    </div>
+
+                    <div id="errorMessage" class="error-message" style="display: none;"></div>
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-secondary" onclick="window.location.href='registro-paso1.html'">
+                            ATRÁS
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            REGISTRARSE
+                        </button>
+                    </div>
+                </form>
+
+                <div class="text-center" style="margin-top: 20px;">
+                    <p style="color: var(--text-gray); font-size: 14px;">
+                        ¿Ya tienes una cuenta?
+                        <a href="login-paciente.html" class="link">Inicia sesión aquí</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api-config.js"></script>
+    <script src="js/validaciones.js"></script>
+</body>
+</html>

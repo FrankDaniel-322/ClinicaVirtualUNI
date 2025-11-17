@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Principal - Clínica UNI</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .dashboard-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .welcome-section {
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-blue));
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .menu-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+            .menu-card:hover {
+                transform: translateY(-5px);
+                border-color: var(--primary-green);
+                box-shadow: var(--shadow-hover);
+            }
+
+        .menu-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .logout-card {
+            border: 2px solid var(--error-red);
+        }
+
+            .logout-card:hover {
+                border-color: var(--error-red);
+                background: rgba(220, 53, 69, 0.05);
+            }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="welcome-section">
+            <h1>Clínica UNI Virtual</h1>
+            <p style="font-size: 18px; margin-top: 10px;">Hola, <strong id="nombreUsuario">Cargando...</strong></p>
+            <p style="opacity: 0.9; margin-top: 5px;">¿En qué podemos ayudarte hoy?</p>
+        </div>
+
+        <div class="menu-grid">
+            <div class="menu-card" onclick="window.location.href='solicitar-consulta.html'">
+                <div class="menu-icon">📋</div>
+                <h3>Solicitar Nueva Consulta</h3>
+                <p>Agenda una consulta médica con nuestros especialistas</p>
+            </div>
+
+            <div class="menu-card" onclick="window.location.href='historial-consultas.html'">
+                <div class="menu-icon">📊</div>
+                <h3>Ver Mi Historial</h3>
+                <p>Revisa tus consultas anteriores y respuestas médicas</p>
+            </div>
+
+            <div class="menu-card" onclick="window.location.href='mi-perfil.html'">
+                <div class="menu-icon">👤</div>
+                <h3>Mi Perfil</h3>
+                <p>Gestiona tu información personal y datos médicos</p>
+            </div>
+
+            <div class="menu-card logout-card" onclick="cerrarSesion()">
+                <div class="menu-icon">🚪</div>
+                <h3>Cerrar Sesión</h3>
+                <p>Salir de manera segura del sistema</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api-config.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const userData = JSON.parse(localStorage.getItem('userData'));
+        if (userData && userData.nombreCompleto) {
+            document.getElementById('nombreUsuario').textContent = userData.nombreCompleto;
+        } else {
+            window.location.href = 'login-paciente.html';
+        }
+    });
+
+    function cerrarSesion() {
+        if(confirm('¿Estás seguro de que deseas cerrar sesión?')) {
+            localStorage.removeItem('jwtToken');
+            localStorage.removeItem('userData');
+            window.location.href = 'index.html';
+        }
+    }
+    </script>
+</body>
+</html>
